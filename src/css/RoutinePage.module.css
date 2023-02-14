@@ -1,0 +1,13 @@
+.routine{
+    border-style:solid ;
+    border-color: black;
+    margin: .5em;
+    padding:.5em;
+    
+}
+
+.activities{
+    border-top: solid;
+    border-color: black;
+    margin-bottom: .5em;
+}
