@@ -1,9 +1,15 @@
 import { useState } from 'react'
 import {login} from "../Api.fetch"
-export const Login = () =>{
+import {NavBar} from '../components/NavBar'
+
+const Login = () =>{
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+
 return(<div>
+        {<NavBar/>}
+        <div>
     <form className="login-form" onSubmit={async (event) => {
         event.preventDefault()
         try {
@@ -28,5 +34,8 @@ return(<div>
 
     </form>
     </div>
+    </div>
 )
 }
+
+export default Login

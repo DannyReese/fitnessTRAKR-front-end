@@ -1,30 +1,39 @@
-// import './App.css';
 
-// import React, { useState } from "react";
-import {Switch,Route,HashRouter } from 'react-router-dom';
+import { Switch, Route, HashRouter } from 'react-router-dom';
 
-// import Welcome from "./Components/Welcome";
-// import Login from "./Components/Login";
-// import Register from "./Components/Register";
+
 import Home from "./routes/Home";
-// import Logout from "./Logout/Logout";
-
-// import { myUser } from './Api';
- 
-// const TOKEN = 'stranger_token';
-
-function App() {
+import RegisterPage from './routes/Register';
+import Login from './routes/Login'
+import RoutinePage from './routes/RoutinePage';
+import ActivityPage from './routes/ActivityPage'
+import UserHome from './routes/UserHome';
 
 
-
+const App = () => {
   return (
     <div>
-    <HashRouter>
-      <Switch>
-        <Route exact path='/'>
-          <Home />
-        </Route>
-      </Switch>
+      <HashRouter>
+        <Switch>
+          <Route exact path='/'>
+            <Home />
+          </Route>
+          <Route path='/login'>
+            <Login />
+          </Route>
+          <Route path='/register'>
+            <RegisterPage />
+          </Route>
+          <Route path='/routines'>
+            <RoutinePage />
+          </Route>
+          <Route path='/activities'>
+            <ActivityPage />
+          </Route>
+          <Route path='/user'>
+            <UserHome />
+          </Route>
+        </Switch>
       </HashRouter>
     </div>
   );

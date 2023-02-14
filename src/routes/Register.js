@@ -1,20 +1,13 @@
 import React, { useState } from "react"
 import { register } from "../Api.fetch"
-import { Link } from "react-router-dom"
+import { NavBar } from "../components/NavBar"
 
-export const Register = () => {
+ const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     return (<div className="body">
-        <div className="title-bar">
-            <div>
-                <span className="title-words">Fitness Trackr</span>
-            </div>
-            <div id='login-container'>
-                <Link to="/">login</Link>
-            </div>
-        </div>
+        {<NavBar />}
         <form className="create-account form" onSubmit={async (event) => {
             event.preventDefault()
             try {
@@ -40,7 +33,6 @@ export const Register = () => {
         </form>
     </div>
     )
+};
 
-}
-
-export default Register
+export default RegisterPage
