@@ -1,47 +1,45 @@
 import { useState } from 'react'
-import {login} from "../Api.fetch"
+import { login } from "../Api.fetch"
 
 
-const Login = ({setIsUser}) =>{
+const Login = ({ setIsUser }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 
-return(<div>
-        {/* {<NavBar/>} */}
+    return (<div>
         <div>
-    <form className="login-form" onSubmit={async (event) => {
-        event.preventDefault()
-        try {
-            const resp = await login(username, password)
-           console.log(resp)
-            if(resp){
-                setIsUser(true)
-            }else{
-                setIsUser(false)
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    }}>
-        <input className="username"
-            placeholder="username.."
-            onChange={event => setUsername(event.target.value)}>
+            <form className="login-form" onSubmit={async (event) => {
+                event.preventDefault()
+                try {
+                    const resp = await login(username, password)
+                     if(resp.token){
+                        setIsUser(true)
+                        }else{
+                        setIsUser(false)
+                        }
+                } catch (error) {
+                    console.error(error);
+                }
+            }}>
+                <input className="username"
+                    placeholder="username.."
+                    onChange={event => setUsername(event.target.value)}>
 
-        </input>
+                </input>
 
-        <input className="password"
-            type='password'
-            placeholder="password.."
-            onChange={event => setPassword(event.target.value)}>
+                <input className="password"
+                    type='password'
+                    placeholder="password.."
+                    onChange={event => setPassword(event.target.value)}>
 
-        </input>
-        <button className="register-button">submit</button>
+                </input>
+                <button className="register-button">submit</button>
 
-    </form>
+            </form>
+        </div>
     </div>
-    </div>
-)
+    )
 }
 
 export default Login
