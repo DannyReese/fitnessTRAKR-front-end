@@ -7,9 +7,10 @@ import Welcome from "./Components/Welcome";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Home from "./Components/Home";
-import Logout from "./Logout/Logout";
+import Logout from "./Components/Logout";
 
-import { myUser } from './Api';
+
+import { myUser } from "./Api.fetch";
  
 const TOKEN = 'stranger_token';
 
@@ -18,9 +19,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [token, setToken] = useState('')
-  const [me, setMe] = useState('');
-  const [posts, setPosts] = useState([]);
- 
+  const [me, setMe] = useState(''); 
 
   const storeToken =(responseToken) => {   
     localStorage.setItem(TOKEN,responseToken);
@@ -55,10 +54,7 @@ function App() {
         <Route 
           exact path="/" 
           element={
-            <Welcome
-            setPosts={setPosts}
-            posts={posts}
-            />
+            <Welcome/>
           } 
         />
         <Route
@@ -75,9 +71,9 @@ function App() {
           }
         />
         <Route
-          exact path="/Register"
+          exact path="/register"
           element={
-            <SignUp
+            <Register
               setUsername={setValue(setUsername)}
               setPassword={setValue(setPassword)}
               setToken={storeToken}
@@ -91,7 +87,12 @@ function App() {
           exact path="/home"
           element={
             <Home
-          
+              setUsername={setValue(setUsername)}
+              setPassword={setValue(setPassword)}
+              setToken={storeToken}
+              username={username}
+              password={password}
+              token={token}
             />
           }
         />
