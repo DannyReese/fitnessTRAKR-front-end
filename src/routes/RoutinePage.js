@@ -1,4 +1,4 @@
-import { NavBar } from "../components/NavBar"
+
 import { useState, useEffect } from "react"
 import { pubRoutines } from '../Api.fetch'
 import RoutinePageCss from '../css/RoutinePage.module.css'
@@ -17,7 +17,8 @@ const RoutinePage = () => {
 
     return (
         <div>
-            <NavBar />
+         
+            <div className={RoutinePageCss.title}><h1>Routines</h1></div>
             <div className={RoutinePageCss.container}>{
                 pubRoutine ? pubRoutine.map(pr => {
                     return (

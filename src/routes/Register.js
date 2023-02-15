@@ -1,13 +1,13 @@
 import React, { useState } from "react"
 import { register } from "../Api.fetch"
-import { NavBar } from "../components/NavBar"
+
 
  const RegisterPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     return (<div className="body">
-        {<NavBar />}
+      
         <form className="create-account form" onSubmit={async (event) => {
             event.preventDefault()
             try {

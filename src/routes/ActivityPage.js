@@ -1,4 +1,4 @@
-import {NavBar} from "../components/NavBar";
+
 import {showActivites} from '../Api.fetch'
 import { useState,useEffect } from "react";
 import ActivityPageCss from '../css/ActivtiyPage.module.css'
@@ -16,7 +16,8 @@ export const ActivityPage = ()=>{
 
     return (
         <div>
-            <NavBar />
+            {/* <NavBar /> */}
+            <div className={ActivityPageCss.title}><h1>Activities</h1></div>
             <div className={ActivityPageCss.container}>{
                 activities ? activities.map(a => {
                     return (

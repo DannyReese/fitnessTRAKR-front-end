@@ -1,5 +1,6 @@
 const URL = "http://fitnesstrac-kr.herokuapp.com/api/"
 
+export let token = localStorage.getItem('token')
 
 export const register = async (username, password) => {
     try {
@@ -46,20 +47,22 @@ export const login = async (username, password) => {
     }
 }
 
-export const isUser = async () => {
+export const isUser = async (token) => {
 
     try {
 
-        const resp = await fetch(`${URL}api/users/me`, {
+        const resp = await fetch(`${URL}users/me`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${token}`
             },
         });
 
         const data = await resp.json();
-        return data;
-
+        if(data.username){
+        return true;
+        }
+        return false
     } catch (error) {
         console.error(error)
     }
@@ -219,7 +222,7 @@ export const deleteRoutine = async (id) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer TOKEN_STRING_HERE'
+                'Authorization': `Bearer ${token}`
             }
         })
 
@@ -283,7 +286,7 @@ export const deleteRoutineAct = async (id) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
+                'Authorization': `Bearer ${token}`
             }
         })
 

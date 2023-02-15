@@ -1,20 +1,25 @@
 import { useState } from 'react'
 import {login} from "../Api.fetch"
-import {NavBar} from '../components/NavBar'
 
-const Login = () =>{
+
+const Login = ({setIsUser}) =>{
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
 
 return(<div>
-        {<NavBar/>}
+        {/* {<NavBar/>} */}
         <div>
     <form className="login-form" onSubmit={async (event) => {
         event.preventDefault()
         try {
             const resp = await login(username, password)
-            console.log(resp);
+           console.log(resp)
+            if(resp){
+                setIsUser(true)
+            }else{
+                setIsUser(false)
+            }
         } catch (error) {
             console.error(error);
         }
@@ -26,6 +31,7 @@ return(<div>
         </input>
 
         <input className="password"
+            type='password'
             placeholder="password.."
             onChange={event => setPassword(event.target.value)}>
 

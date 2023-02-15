@@ -1,6 +1,9 @@
-const UserHome = ()=>{
+
+
+const UserHome = ({user,setUser})=>{
     return (
         <div>
+
             UserHome
         </div>
     )
