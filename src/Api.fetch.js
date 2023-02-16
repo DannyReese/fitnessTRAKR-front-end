@@ -2,7 +2,7 @@ const URL = "http://fitnesstrac-kr.herokuapp.com/api/";
 
 export const register = async (username, password) => {
   try {
-    const response = await fetch(`${URL}/users/register`, {
+    const response = await fetch(`${URL}users/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +22,7 @@ export const register = async (username, password) => {
 
 export const login = async (username, password) => {
   try {
-    const response = await fetch(`${URL}/users/login`, {
+    const response = await fetch(`${URL}users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ export const login = async (username, password) => {
 export const myUser = async (token) => {
     try {
       const response = await fetch(
-        `${URL}/users/me`,
+        `${URL}users/me`,
         {
           headers: {
             'Content-Type': 'application/json',

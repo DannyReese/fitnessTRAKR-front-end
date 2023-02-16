@@ -1,13 +1,13 @@
 import './App.css';
 
 import React, { useState,useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import Welcome from "./Components/Welcome";
-import Login from "./Components/Login";
-import Register from "./Components/Register";
-import Home from "./Components/Home";
-import Logout from "./Components/Logout";
+import Welcome from "./Components/Welcome/Welcome.js";
+import Login from "./Components/Login/Login.js";
+import Register from "./Components/Register/Register.js";
+import Home from "./Components/Home/Home.js";
+import Logout from "./Components/Logout/Logout.js";
 
 
 import { myUser } from "./Api.fetch";
@@ -49,7 +49,6 @@ function App() {
 
   return (
     <>
-    <Router>
       <Routes>
         <Route 
           exact path="/" 
@@ -108,7 +107,6 @@ function App() {
           } 
          /> 
       </Routes>
-    </Router>
     </>
   );
 }
