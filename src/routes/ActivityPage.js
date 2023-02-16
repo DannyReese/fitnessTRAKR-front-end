@@ -3,16 +3,16 @@ import {showActivites} from '../Api.fetch'
 import { useState,useEffect } from "react";
 import ActivityPageCss from '../css/ActivtiyPage.module.css'
 
-export const ActivityPage = ()=>{
+export const ActivityPage = ({setUser})=>{
     const [activities, setActivities] = useState([])
 
     const getActivities = async () => {
-        // add condtion in here if user is logged in return all routines 
+        setUser(localStorage.getItem('user'))
         const res = await showActivites()
         setActivities(res)
     }
 
-    useEffect(() => { getActivities() }, []);
+    useEffect(() => { getActivities() });
 
     return (
         <div>

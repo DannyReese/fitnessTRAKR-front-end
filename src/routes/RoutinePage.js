@@ -3,17 +3,18 @@ import { useState, useEffect } from "react"
 import { pubRoutines } from '../Api.fetch'
 import RoutinePageCss from '../css/RoutinePage.module.css'
 
-const RoutinePage = () => {
+const RoutinePage = ({setUser}) => {
 
     const [pubRoutine, setPubRoutines] = useState([])
 
     const getPubRoutines = async () => {
-        // add condtion in here if user is logged in return all routines 
+        setUser(localStorage.getItem('user'))
         const res = await pubRoutines()
+    
         setPubRoutines(res)
     }
 
-    useEffect(() => { getPubRoutines() }, []);
+    useEffect(() => { getPubRoutines() });
 
     return (
         <div>

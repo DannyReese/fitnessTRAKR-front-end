@@ -1,12 +1,15 @@
 
 
+import { Navigate } from 'react-router-dom';
 import HomeCss from '../css/Home.module.css'
 
-const Home =()=>{
+const Home =({user})=>{
 
-    return(
-        <div className={HomeCss.Page}>
-            {/* <NavBar/> */}
+    return(user?<Navigate to='/user'/>:
+        <div className={HomeCss.container}>
+            <div>
+                <h1>Ready to Start Your Fitness Journey?</h1>
+            </div>
         </div>
     )
 };

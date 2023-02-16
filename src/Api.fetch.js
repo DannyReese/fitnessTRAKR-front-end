@@ -39,8 +39,8 @@ export const login = async (username, password) => {
         })
         const data = await resp.json()
         console.log(data.token)
-        localStorage.setItem('user', username)
-        localStorage.setItem('token', data.token)
+        localStorage.setItem('token',data.token)
+        
         return data
     } catch (error) {
         console.error(error)
@@ -60,7 +60,7 @@ export const isUser = async (token) => {
 
         const data = await resp.json();
         if(data.username){
-        return true;
+        return data
         }
         return false
     } catch (error) {

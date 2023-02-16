@@ -1,11 +1,21 @@
+import UserHomeCss from "../css/Home.module.css"
+import { Navigate } from "react-router-dom";
+import { useEffect, } from "react";
+const UserHome = ({setUser ,user})=>{
+ console.log(user)
 
 
-const UserHome = ({user,setUser})=>{
+  const nameTheUser =()=>{
+    setUser(localStorage.getItem('user'))
+  };
+  useEffect(()=>{nameTheUser()})
     return (
-        <div>
-
-            UserHome
+        user?
+        <div className={UserHomeCss.container}>
+         <div>
+                <h1>{`Welcome ${user}`}</h1>
         </div>
+         </div>:<Navigate to ='/'/>
     )
 };
 

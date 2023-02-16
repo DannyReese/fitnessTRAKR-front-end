@@ -1,23 +1,30 @@
 import { useState } from 'react'
 import { login } from "../Api.fetch"
 
+import { Navigate } from 'react-router-dom'
 
-const Login = ({ setIsUser }) => {
+
+const Login = ({ setUser,setToken,user }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    console.log(user)
+  
+    return (user?<Navigate to='/user'/>:
+        <div>
 
-
-    return (<div>
         <div>
             <form className="login-form" onSubmit={async (event) => {
                 event.preventDefault()
                 try {
                     const resp = await login(username, password)
-                     if(resp.token){
-                        setIsUser(true)
-                        }else{
-                        setIsUser(false)
-                        }
+                    console.log(resp)
+                    setToken(resp.token)
+                    if (resp.token) {
+                        localStorage.setItem('user',resp.user.username)
+                        setUser(localStorage.getItem('user'))
+                    } else {
+                        setUser(false)
+                    }
                 } catch (error) {
                     console.error(error);
                 }
@@ -38,7 +45,9 @@ const Login = ({ setIsUser }) => {
 
             </form>
         </div>
+
     </div>
+
     )
 }
 
