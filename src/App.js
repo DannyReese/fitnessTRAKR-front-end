@@ -3,11 +3,11 @@ import './App.css';
 import React, { useState,useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Welcome from "./Components/Welcome/Welcome.js";
-import Login from "./Components/Login/Login.js";
-import Register from "./Components/Register/Register.js";
-import Home from "./Components/Home/Home.js";
-import Logout from "./Components/Logout/Logout.js";
+import NavBar from "./Components/NavBar.js";
+import Login from "./Components/Login.js";
+import Register from "./Components/Register.js";
+import Home from "./Components/Home.js";
+import Logout from "./Components/Logout.js";
 
 
 import { myUser } from "./Api.fetch";
@@ -53,7 +53,10 @@ function App() {
         <Route 
           exact path="/" 
           element={
-            <Welcome/>
+            <NavBar
+            username={username} 
+            setUsername={setUsername}
+            />
           } 
         />
         <Route

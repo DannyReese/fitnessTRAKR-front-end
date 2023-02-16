@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { login } from "../../Api.fetch";
-
+import { login } from "../Api.fetch";
 
 const Login = ({ username, setUsername, password, setPassword, token,setToken }) => {
 
