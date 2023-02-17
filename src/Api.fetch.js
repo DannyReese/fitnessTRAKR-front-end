@@ -69,11 +69,11 @@ export const isUser = async (token) => {
 }
 
 export const showUsersRoutines = async (username) => {
-    console.log(username)
+   
     const resp = await fetch(`${URL}users/${username}/routines`, {
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
 
         },
     })
@@ -96,7 +96,7 @@ export const showActivites = async () => {
 
         const data = await resp.json()
 
-        console.log(data);
+      
 
         return data
     } catch (error) {
@@ -168,7 +168,7 @@ export const pubRoutines = async () => {
 
         const data = await resp.json();
 
-        console.log(data);
+  
 
         return data;
     } catch (error) {

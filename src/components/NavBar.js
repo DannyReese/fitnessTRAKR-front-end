@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import NavBarCss from '../css/NavBar.module.css'
 export const NavBar = ({ user, setUser }) => {
-    console.log(user)
+  
 
     const logout = () => {
         localStorage.removeItem('user');
@@ -21,11 +21,11 @@ export const NavBar = ({ user, setUser }) => {
             
             <Link to='/activities'>Activities</Link>
 
-            {user ? <div
+            {user ? <Link to='/login'
                 className={NavBarCss.logout}
-                onClick={() => {
+                onMouseDown={() => {
                     logout()
-                }}>logOut</div> :
+                }}>logOut</Link> :
                 <Link to='/login'>Login</Link>}
 
             {user ? null

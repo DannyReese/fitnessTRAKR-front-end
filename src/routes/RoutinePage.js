@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const RoutinePage = ({ setUser }) => {
 
     const [pubRoutine, setPubRoutines] = useState([])
-    console.log(pubRoutine)
+
 
     const getPubRoutines = async () => {
         setUser(localStorage.getItem('user'))

@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom'
 const Login = ({ setUser,setToken,user }) => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    console.log(user)
+
   
     return (user?<Navigate to='/user'/>:
         <div>

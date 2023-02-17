@@ -4,7 +4,7 @@ import { useEffect, } from "react";
 
 
 const UserHome = ({setUser ,user})=>{
- console.log(user)
+ 
 
 
   const nameTheUser =()=>{

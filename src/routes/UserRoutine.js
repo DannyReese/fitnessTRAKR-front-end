@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import UserRoutinesCss from '../css/UserRoutine.module.css'
 import { showUsersRoutines } from "../Api.fetch"
+import { Navigate } from "react-router-dom";
 
 import { Link } from "react-router-dom";
 const UserRoutines = ({ setUser,
@@ -14,10 +15,10 @@ const UserRoutines = ({ setUser,
     const user = localStorage.getItem('user')
 
     const [userRoutines, setUserRoutines] = useState([]);
-    console.log(userRoutines)
+   
     const getRoutines = async () => {
         setUser(user)
-        console.log(user)
+       
         const resp = await showUsersRoutines(user);
         setUserRoutines(resp);
 
@@ -25,7 +26,7 @@ const UserRoutines = ({ setUser,
     }
     useEffect(() => { getRoutines() }, []);
 
-    return (<div>
+    return (user?<div>
         <h1 className={UserRoutinesCss.title}>{`${user}'s Routines`}</h1>
         <div >
             <Link to='/routines-create' className={UserRoutinesCss.Link}>Create Routine</Link>
@@ -37,7 +38,7 @@ const UserRoutines = ({ setUser,
                     return (
                         <div className={UserRoutinesCss.routine} key={ur.id}
                             onMouseOver={() => {
-                                console.log(ur)
+                             
                                 setRoutineId(ur.id)
                                 setRoutineName(ur.name)
                                 setGoal(ur.goal)
@@ -69,7 +70,7 @@ const UserRoutines = ({ setUser,
 
             </div>
         </div>
-    </div>
+    </div>:<Navigate to='/'/>
     )
 }
 
