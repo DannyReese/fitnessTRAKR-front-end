@@ -4,11 +4,11 @@ import NavBarCss from '../css/NavBar.module.css'
 
 const NavBar = ({me,username,setUsername })=>{
 
-    const logout = () => {
-        localStorage.removeItem('username');
-        localStorage.removeItem('token')
-        setUsername(null);
-    }
+    // const logout = () => {
+    //     localStorage.removeItem('username');
+    //     localStorage.removeItem('token')
+    //     setUsername(null);
+    // }
 
     return(
         <div className={NavBarCss.navBar}>
@@ -17,7 +17,7 @@ const NavBar = ({me,username,setUsername })=>{
             <Link to='/routines'>Routines</Link>
             <Link to='/activities'>Activities</Link>
             {/* make contdition if user logged in have log out link instead of login */}
-            {me ? <div className={NavBarCss.logout}onClick={()=>{logout()}}>logOut</div>:<Link to='/login'>Login</Link>}
+            {me ? <Link to='/logout'>Logout</Link> :<Link to='/login'>Login</Link>}
             {me ? null : <Link to='/register'>Register</Link>}
         </div>
     )

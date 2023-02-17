@@ -8,11 +8,11 @@ import Login from "./Components/Login.js";
 import Register from "./Components/Register.js";
 import Home from "./Components/Home.js";
 import Logout from "./Components/Logout.js";
+import Welcome from "./Components/Welcome.js";
 
 
-import { myUser } from "./Api.fetch";
  
-const TOKEN = 'stranger_token';
+const TOKEN = 'fitnessTracker_token';
 
 function App() {
 
@@ -35,27 +35,17 @@ function App() {
     return (event) => {func(event.target.value)};
   }
 
-  useEffect(() => {
-    if (token) {
-      myUser(token)
-        .then((me) => {
-          setMe(me);
-        })
-        .catch((error) => {
-          console.log(`Failed to fetch me.`);
-        });
-    }
-  })
-
   return (
     <>
+      <NavBar
+        username={username} 
+        setUsername={setUsername}
+      />
       <Routes>
         <Route 
           exact path="/" 
           element={
-            <NavBar
-            username={username} 
-            setUsername={setUsername}
+            <Welcome
             />
           } 
         />

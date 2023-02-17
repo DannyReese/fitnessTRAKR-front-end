@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { login } from "../Api.fetch";
+import LoginCss from '../css/Login.module.css'
 
 const Login = ({ username, setUsername, password, setPassword, token,setToken }) => {
 
@@ -8,6 +9,7 @@ const Login = ({ username, setUsername, password, setPassword, token,setToken })
   return (
     <>
       <form
+        className={LoginCss.login}
         id="login"
         onSubmit={async (event) => {
           event.preventDefault();
@@ -15,8 +17,7 @@ const Login = ({ username, setUsername, password, setPassword, token,setToken })
           try {
             const response = await login(username,password)
 
-            const json = await response.json();
-            const responseToken = json.data.token;
+            const responseToken = response.token;
 
             setToken(responseToken);
             console.log("Logged in successfully");
@@ -29,11 +30,11 @@ const Login = ({ username, setUsername, password, setPassword, token,setToken })
       >
         <label>
           Name:
-          <input value={username} onChange={setUsername} />
+          <input  placeholder = 'Enter name' value={username} onChange={setUsername} />
         </label>
         <label>
           Password:
-          <input value={password} onChange={setPassword} />
+          <input placeholder = 'Enter password' value={password} onChange={setPassword} />
         </label>
         <button id = "submit">Submit</button>
       </form>
