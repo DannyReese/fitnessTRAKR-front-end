@@ -250,12 +250,18 @@ export const deleteRoutine = async (id) => {
 
 export const addActivity = async (id, actId, count, duration) => {
     try {
+        console.log(id, actId, count, duration)
+
         const resp = await fetch(`${URL}routines/${id}/activities`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
-                activityId: `${actId}`,
-                count: `${count}`,
-                duration: `${duration}`
+                activityId: actId,
+                count: count,
+                duration: duration
             })
         });
 

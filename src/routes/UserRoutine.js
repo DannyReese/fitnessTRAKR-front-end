@@ -42,6 +42,7 @@ const UserRoutines = ({ setUser,
                                 setRoutineName(ur.name)
                                 setGoal(ur.goal)
                                 setIsPublic(ur.isPublic)
+                                localStorage.setItem('routineName',ur.name)
                             }}>
                             <div className={UserRoutinesCss.routineHead}><h2>{ur.name}</h2>
                                 <div className={UserRoutinesCss.routineChangers}>

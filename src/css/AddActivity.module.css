@@ -9,13 +9,49 @@
     justify-content: center;
 }
 .select{
-    max-height: 280px;
+    width: 50vw;
     overflow-y:scroll;
 }
 
 .option{
-    max-height: 30px;
+    width: 50vw;
     overflow-y:scroll;
     text-overflow: ellipsis;
     position: relative;
+}
+
+.cdInputs{
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+   max-width: 50vw;
+   margin: none;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.Link{
+    margin-top:1em;
+    color: rgb(224, 221, 221);
+    border-style: solid;
+    border-width: .5px;
+    width: 10vw;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.Link:hover { 
+    background-color: rgb(224, 221, 221);
+  }
+.words{
+    display: flex;
+    justify-content: center;
+    margin: none;
+    color: black;
 }

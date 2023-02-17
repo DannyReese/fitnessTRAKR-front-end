@@ -89,8 +89,12 @@ const App = () => {
         } />
         <Route path='/routine-activities-add' element={
           <AddActivity 
+          setRoutineName={setRoutineName}
           routineName={routineName} 
-          setUser={setUser}/>
+          setUser={setUser}
+          routineId={routineId}
+          />
+          
         }/>
       </Routes>
 
