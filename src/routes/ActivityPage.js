@@ -12,11 +12,10 @@ export const ActivityPage = ({setUser})=>{
         setActivities(res)
     }
 
-    useEffect(() => { getActivities() });
+    useEffect(() => { getActivities() },[]);
 
     return (
         <div>
-            {/* <NavBar /> */}
             <div className={ActivityPageCss.title}><h1>Activities</h1></div>
             <div className={ActivityPageCss.container}>{
                 activities ? activities.map(a => {

@@ -69,15 +69,18 @@ export const isUser = async (token) => {
 }
 
 export const showUsersRoutines = async (username) => {
+    console.log(username)
     const resp = await fetch(`${URL}users/${username}/routines`, {
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+
         },
     })
 
     const data = await resp.json();
 
-    console.log(data);
+
 
     return data
 };
@@ -173,10 +176,14 @@ export const pubRoutines = async () => {
     }
 };
 
-export const createRoutine = async (name, goal, isPublic) => {
+export const createRoutine = async ({name, goal, isPublic}) => {
     try {
         const resp = await fetch(`${URL}routines`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: `${name}`,
                 goal: `${goal}`,
@@ -194,10 +201,14 @@ export const createRoutine = async (name, goal, isPublic) => {
     }
 };
 
-export const updateRoutine = async (id, name, goal, isPublic = null) => {
+export const updateRoutine = async (id, name, goal, isPublic) => {
     try {
         const resp = await fetch(`${URL}routines/${id}`, {
             method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 name: `${name}`,
                 goal: `${goal}`,

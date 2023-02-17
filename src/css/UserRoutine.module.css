@@ -1,0 +1,42 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+.routine{
+    border-style:solid ;
+    border-color: black;
+    margin: .5em;
+    padding:.5em;
+    
+}
+
+.activities{
+    border-top: solid;
+    border-color: black;
+    margin-bottom: .5em;
+}
+
+.container{
+    height: 95vh;
+    overflow-y: scroll;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+
+.Link{
+    color: black;
+    display: flex;
+    justify-content: center;
+}
+.routineHead{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.routineChangers{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  
+}

@@ -1,6 +1,8 @@
 import UserHomeCss from "../css/Home.module.css"
 import { Navigate } from "react-router-dom";
 import { useEffect, } from "react";
+
+
 const UserHome = ({setUser ,user})=>{
  console.log(user)
 

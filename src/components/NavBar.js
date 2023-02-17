@@ -15,7 +15,7 @@ export const NavBar = ({ user, setUser }) => {
             {user ? <Link to='/user'>Home</Link>
                 : <Link to='/'>Home</Link>}
 
-            {user ? <Link to={`/routines/${user}`}>My Routines</Link> : null}
+            {user ? <Link to={'routines-user'}>My Routines</Link> : null}
 
             <Link to='/routines'>Routines</Link>
             

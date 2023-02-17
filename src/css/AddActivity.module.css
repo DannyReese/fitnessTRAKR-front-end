@@ -1,0 +1,21 @@
+.container{
+    height: 95vh;
+    overflow-y: scroll;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+.select{
+    max-height: 280px;
+    overflow-y:scroll;
+}
+
+.option{
+    max-height: 30px;
+    overflow-y:scroll;
+    text-overflow: ellipsis;
+    position: relative;
+}
