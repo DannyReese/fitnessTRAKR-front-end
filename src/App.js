@@ -13,6 +13,7 @@ import { NavBar } from './components/NavBar';
 import Create from './routes/Create';
 import AddActivity from './routes/AddActivity'
 import EditRoutineActivity from './routes/EditRoutineActivity';
+import CreateActiviy from './routes/CreateActivity';
 
 
 const App = () => {
@@ -48,12 +49,12 @@ const App = () => {
 
         <Route exact path={'/routines'} element={
           <RoutinePage
-            setUser={setUser} />}
+            setUser={setUser} user={user} />}
         />
 
         <Route path={'/activities'} element={
           <ActivityPage
-            setUser={setUser} />}
+            setUser={setUser} user={user} />}
         />
 
         <Route path={'/user'} element={
@@ -81,6 +82,10 @@ const App = () => {
 
         <Route path={'/routines-create'} element={
           <Create
+            setUser={setUser} />}
+        />
+         <Route path={'/activities-create'} element={
+          <CreateActiviy
             setUser={setUser} />}
         />
         <Route path={'/edit-routine'} element={

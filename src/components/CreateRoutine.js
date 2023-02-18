@@ -15,7 +15,7 @@ const CreateRoutine = () => {
 
     return (<>
     <div className={EditCss.title} >
-                <h1>Create</h1>
+                <h1>Create Routine</h1>
             </div>
         <div className={EditCss.container}>
 

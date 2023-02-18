@@ -1,6 +1,6 @@
 const URL = "http://fitnesstrac-kr.herokuapp.com/api/"
 
-export let token = localStorage.getItem('token')
+
 
 export const register = async (username, password) => {
     try {
@@ -108,6 +108,10 @@ export const createActiviy = async (name, desc) => {
     try {
         const resp = await fetch(`${URL}activities`, {
             method: "POST",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify({
                 name: `${name}`,
                 description: `${desc}`
@@ -182,7 +186,7 @@ export const createRoutine = async ({name, goal, isPublic}) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
                 name: `${name}`,
@@ -207,7 +211,7 @@ export const updateRoutine = async (id, name, goal, isPublic) => {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
                 name: `${name}`,
@@ -233,7 +237,7 @@ export const deleteRoutine = async (id) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
 
@@ -256,7 +260,7 @@ export const addActivity = async (id, actId, count, duration) => {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
                 activityId: actId,
@@ -282,7 +286,7 @@ export const updateRoutineActivity = async (id, count, dur) => {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify({
                 count: count,
@@ -307,7 +311,7 @@ export const deleteRoutineAct = async (id) => {
             method: "DELETE",
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
             }
         })
 

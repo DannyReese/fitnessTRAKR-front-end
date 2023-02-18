@@ -4,7 +4,7 @@ import { pubRoutines } from '../Api.fetch'
 import RoutinePageCss from '../css/RoutinePage.module.css'
 import { Link } from 'react-router-dom'
 
-const RoutinePage = ({ setUser }) => {
+const RoutinePage = ({ setUser,user }) => {
 
     const [pubRoutine, setPubRoutines] = useState([])
 
@@ -21,7 +21,14 @@ const RoutinePage = ({ setUser }) => {
     return (
         <div>
 
-            <div className={RoutinePageCss.title}><h1>Routines</h1></div>
+<div className={RoutinePageCss.titleDiv}>
+        <div className={RoutinePageCss.titleBox}>
+        <div className={RoutinePageCss.headerBox}>
+        <h1 className={RoutinePageCss.title}>Routines</h1>
+        </div>
+        {user?<Link to='/routines-create' className={RoutinePageCss.Link}>Create Routine</Link>:<div>log in to create routines</div>}
+        </div>
+        </div>
             <div className={RoutinePageCss.container}>{
                 pubRoutine.length ? pubRoutine.map(pr => {
                     return (
