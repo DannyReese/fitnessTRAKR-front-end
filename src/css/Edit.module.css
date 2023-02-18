@@ -1,0 +1,50 @@
+.container{
+    height: 95vh;
+    overflow-y: scroll;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
+.title{
+    display: flex;
+    justify-content: center;
+}
+.cdInputs{
+    display: flex;
+    flex-direction: column;
+    width: 50vw;
+     max-width: 50vw;
+     margin: none;
+  }
+  
+  .form{
+      display: flex;
+      flex-direction: column;
+      border-style: solid;
+      border-radius: 7px;
+      align-items: center;
+      justify-content: center;
+      padding-bottom: .5em;
+      box-shadow: 10px 10px 5px lightblue;
+      background-color: rgb(226, 242, 249);
+      border-color:  cornflowerblue;
+  }
+  .submit{
+    color: black;
+    
+  }
+  .submit:hover{
+    color: aliceblue;
+  }
+  .subDiv{
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+  }
+
+  .subDiv:hover{
+    width: 140px;
+    border-radius: 7px;
+    background-color: cornflowerblue;
+   
+  }
+  

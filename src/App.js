@@ -12,16 +12,21 @@ import { useState } from 'react';
 import { NavBar } from './components/NavBar';
 import Create from './routes/Create';
 import AddActivity from './routes/AddActivity'
+import EditRoutineActivity from './routes/EditRoutineActivity';
 
 
 const App = () => {
   const [user, setUser] = useState('')
-  const [token, setToken] = useState('')
+
   const [routineId, setRoutineId] = useState('')
   const [routineName, setRoutineName] = useState('')
   const [goal, setGoal] = useState('')
   const [isPublic, setIsPublic] = useState(true)
   const [activityId, setActivityId] = useState('')
+  const [actName,setActName]=useState('')
+  const [count,setCount] = useState('')
+  const [dur,setDur] = useState('')
+  console.log(activityId)
 
   return (
 
@@ -34,7 +39,7 @@ const App = () => {
         />
 
         <Route path={'/login'} element={
-          <Login user={user} setToken={setToken} setUser={setUser} />}
+          <Login user={user} setUser={setUser} />}
         />
 
         <Route path={'/register'} element={
@@ -63,9 +68,15 @@ const App = () => {
             setRoutineId={setRoutineId}
             setRoutineName={setRoutineName}
             setGoal={setGoal}
-            setActivityId={setActivityId} 
-            setIsPublic={setIsPublic}  
-            />}
+            setActivityId={setActivityId}
+            setIsPublic={setIsPublic}
+            routineId={routineId}
+            setActName={setActName}
+            setCount={setCount}
+            setDur={setDur}
+            activityId={activityId}
+
+          />}
         />
 
         <Route path={'/routines-create'} element={
@@ -83,19 +94,32 @@ const App = () => {
             setGoal={setGoal}
             activityId={activityId}
             setActivityId={setActivityId}
-            isPublic={isPublic} 
+            isPublic={isPublic}
             setIsPublic={setIsPublic}
           />
         } />
         <Route path='/routine-activities-add' element={
-          <AddActivity 
-          setRoutineName={setRoutineName}
-          routineName={routineName} 
-          setUser={setUser}
-          routineId={routineId}
+          <AddActivity
+            setRoutineName={setRoutineName}
+            routineName={routineName}
+            setUser={setUser}
+            routineId={routineId}
           />
-          
-        }/>
+
+        } />
+        <Route path='/routine-activity-edit' element={
+          <EditRoutineActivity
+            setUser={setUser}
+            activityId={activityId}
+            actName={actName}
+            setCount={setCount}
+            count={count}
+            setDur={setDur}
+            dur={dur}
+          />}
+        />
+
+
       </Routes>
 
     </>

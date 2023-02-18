@@ -277,9 +277,13 @@ export const addActivity = async (id, actId, count, duration) => {
 };
 
 export const updateRoutineActivity = async (id, count, dur) => {
-    try {
-        const resp = await fetch(`${URL}api/routine_activities/${id}`, {
+    try {console.log(id,count,dur)
+        const resp = await fetch(`${URL}routine_activities/${id}`, {
             method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
             body: JSON.stringify({
                 count: count,
                 duration: dur

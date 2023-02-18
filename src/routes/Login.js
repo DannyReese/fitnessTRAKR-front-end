@@ -18,7 +18,7 @@ const Login = ({ setUser,setToken,user }) => {
                 try {
                     const resp = await login(username, password)
                     console.log(resp)
-                    setToken(resp.token)
+                  
                     if (resp.token) {
                         localStorage.setItem('user',resp.user.username)
                         setUser(localStorage.getItem('user'))

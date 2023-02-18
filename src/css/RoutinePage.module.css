@@ -5,15 +5,18 @@
 }
 .routine{
     border-style:solid ;
-    border-color: black;
+    border-color:  cornflowerblue;
+    border-radius: 7px;
     margin: .5em;
     padding:.5em;
+    box-shadow: 10px 10px 5px lightblue;
+    background-color: rgb(226, 242, 249);
     
 }
 
 .activities{
     border-top: solid;
-    border-color: black;
+    border-color: cornflowerblue;
     margin-bottom: .5em;
 }
 

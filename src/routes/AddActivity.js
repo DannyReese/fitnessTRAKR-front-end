@@ -23,13 +23,14 @@ const AddActivity = ({ routineId, routineName, setUser, setRoutineName }) => {
     const handleChange = (e) => {
         setValue(e.target.value);
     };
-
+// eslint-disable-next-line
     useEffect(() => { getActivities() }, []);
     return (
         <>
             <div className={AddActivityCss.title} >
                 <h1>{routineName}</h1>
             </div>
+            
             <div className={AddActivityCss.container}>
                 <form className={AddActivityCss.form}>
 

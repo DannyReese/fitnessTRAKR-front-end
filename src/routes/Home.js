@@ -10,6 +10,9 @@ const Home =({user})=>{
             <div>
                 <h1>Ready to Start Your Fitness Journey?</h1>
             </div>
+            <div>
+              
+            </div>
         </div>
     )
 };

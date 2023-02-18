@@ -10,7 +10,7 @@ export const NavBar = ({ user, setUser }) => {
     }
     return (
         <div className={NavBarCss.navBar}>
-            <h2>FitnessTrac.kr</h2>
+            <h2 className={NavBarCss.title}>FitnessTrac.kr</h2>
 
             {user ? <Link to='/user'>Home</Link>
                 : <Link to='/'>Home</Link>}
