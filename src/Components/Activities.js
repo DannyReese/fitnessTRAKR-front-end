@@ -1,17 +1,14 @@
-import React , {useEffect}  from "react";
+import React   from "react";
 import { getActivities } from "../Api.activities";
-// eslint-disable-next-line
 import ActivityCss from "../css/Activity.module.css";
 
-const Activities = async ( activities, setActivities) => 
-
+const Activities = async ( [activities, setActivities]) => 
 {
-useEffect(() => {
     try {
-        
             const showActivities = async () => {
-            const res = await getActivities()
-            setActivities(res)
+            const res = getActivities()
+            console.log(res)
+            setActivities(res)        
         }
 
         showActivities();
@@ -20,34 +17,37 @@ useEffect(() => {
          console.log(error);
         }
 
-    }, [setActivities]);
+         console.log(activities);
+
+//   useEffect((res) => {
+//     setActivities(res)
+//   }, [setActivities]);
 
 return (
-    <div>
-        <div className={ActivityCss.titleDiv}>
-            <div className={ActivityCss.titleBox}>
-                <div className={ActivityCss.headerBox}>
-                    <h1 className={ActivityCss.title}>Activities</h1>
-                </div>
-            {/* {user? <Link to='/activities-create' className={ActivityPageCss.Link}>Create Activity</Link>:<div>log in to create routines</div>} */}
-            </div>
-        </div>
-    <div className={ActivityCss.container}> 
-    {activities ? activities.map(a => {
+    // <div>
+    //     <div className={ActivityCss.titleDiv}>
+    //         <div className={ActivityCss.titleBox}>
+    //             <div className={ActivityCss.headerBox}>
+    //                 <h1 className={ActivityCss.title}>Activities</h1>
+    //             </div>
+    //         {/* {user? <Link to='/activities-create' className={ActivityPageCss.Link}>Create Activity</Link>:<div>log in to create routines</div>} */}
+    //         </div>
+    //     </div>
+
+    // <div> 
+    {activities.map(activity => {
        return (
-           <div className={ActivityCss.activity} key={a.id}>
-                   <h2>{a.name}</h2>
-                   <span>{a.id}</span>
-                   <span>{a.description}</span>
-               
+           <div className={ActivityCss.activity} key={activity.id}>
+                   <h2>{activity.name}</h2>
+                   <span>{activity.description}</span>
            </div>
-       )
-   }) : null
-}
-   Activities
-</div>
-</div>
-    )
+            )
+        }) 
+    }
+       
+    // </div>
+// </div>
+)
 
 }
 

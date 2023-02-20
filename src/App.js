@@ -20,8 +20,8 @@ function App() {
   const [password, setPassword] = useState('');
   const [token, setToken] = useState('')
   const [me, setMe] = useState(''); 
-  const [activities, setActivities] = useState('');
-  const [routines, setRoutines] = useState('');
+  const [activities, setActivities] = useState([]);
+  const [routines, setRoutines] = useState([]);
   const [activityName, setActivityName] = useState('');
   const [activityDesc, setActivityDesc] = useState('');
 
