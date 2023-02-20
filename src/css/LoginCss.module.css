@@ -1,0 +1,32 @@
+.container{
+    height: 95vh;
+    overflow-y: scroll;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items:self-start;
+
+}
+
+.form{
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 7px;
+    align-items:center;
+    justify-content: space-around;
+    padding-bottom: .5em;
+    width: 30vw;
+    height: 15vh;
+    box-shadow: 10px 10px 5px lightblue;
+    background-color: rgb(226, 242, 249);
+    border-color:  cornflowerblue;
+}
+
+button{
+    border-style: none;
+    border-radius: 2px;
+    color: aliceblue;
+    background-color: cornflowerblue;}

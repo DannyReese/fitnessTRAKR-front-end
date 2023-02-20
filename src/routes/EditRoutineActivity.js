@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import EditRaCss from '../css/EditRoutineAct.module.css'
 import { useEffect } from 'react';
 
-const EditRoutineActivity = ({ activityId, setUser, actName, setCount, setDur, count, dur }) => {
+const EditRoutineActivity = ({ setUser, setCount, setDur, count, dur }) => {
     const nameTheUser = () => {
         setUser(localStorage.getItem('user'))
     };
@@ -11,7 +11,7 @@ const EditRoutineActivity = ({ activityId, setUser, actName, setCount, setDur, c
     useEffect(() => { nameTheUser() }, []);
     return (<>
         <div className={EditRaCss.title} >
-            <h1>{actName}</h1>
+            <h1>{localStorage.getItem('actName')}</h1>
         </div>
 
         <div className={EditRaCss.container}>
@@ -41,10 +41,12 @@ const EditRoutineActivity = ({ activityId, setUser, actName, setCount, setDur, c
                         className={EditRaCss.submit}
                         onMouseDown={() => {
                             updateRoutineActivity(
-                                activityId,
+                                localStorage.getItem('actId'),
                                 count,
                                 dur
-                            )
+                            ).then(() => {
+                                localStorage.removeItem('actId')
+                                localStorage.removeItem('actName')})
                         }}> Submit Changes</Link>
                 </div>
 

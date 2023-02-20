@@ -16,18 +16,17 @@ import EditRoutineActivity from './routes/EditRoutineActivity';
 import CreateActiviy from './routes/CreateActivity';
 
 
-const App = () => {
-  const [user, setUser] = useState('')
 
-  const [routineId, setRoutineId] = useState('')
+const App = () => {
+
+  const [user, setUser] = useState('')
   const [routineName, setRoutineName] = useState('')
   const [goal, setGoal] = useState('')
   const [isPublic, setIsPublic] = useState(true)
-  const [activityId, setActivityId] = useState('')
-  const [actName,setActName]=useState('')
-  const [count,setCount] = useState('')
-  const [dur,setDur] = useState('')
-  console.log(activityId)
+  const [count, setCount] = useState('')
+  const [dur, setDur] = useState('')
+  const [routineId, setRoutineId] = useState('')
+  const [activityId, setActivityId] =useState('')
 
   return (
 
@@ -65,18 +64,15 @@ const App = () => {
 
         <Route exact path={'/routines-user'} element={
           <UserRoutines
-            setUser={setUser}
+          activityId={activityId}
+          setActivityId={setActivityId}
             setRoutineId={setRoutineId}
-            setRoutineName={setRoutineName}
-            setGoal={setGoal}
-            setActivityId={setActivityId}
-            setIsPublic={setIsPublic}
             routineId={routineId}
-            setActName={setActName}
+            setUser={setUser}
+            setGoal={setGoal}
+            setIsPublic={setIsPublic}
             setCount={setCount}
             setDur={setDur}
-            activityId={activityId}
-
           />}
         />
 
@@ -84,21 +80,17 @@ const App = () => {
           <Create
             setUser={setUser} />}
         />
-         <Route path={'/activities-create'} element={
+        <Route path={'/activities-create'} element={
           <CreateActiviy
             setUser={setUser} />}
         />
         <Route path={'/edit-routine'} element={
           <Edit
             setUser={setUser}
-            routineId={routineId}
-            setRoutineId={setRoutineId}
             routineName={routineName}
             setRoutineName={setRoutineName}
             goal={goal}
             setGoal={setGoal}
-            activityId={activityId}
-            setActivityId={setActivityId}
             isPublic={isPublic}
             setIsPublic={setIsPublic}
           />
@@ -108,22 +100,18 @@ const App = () => {
             setRoutineName={setRoutineName}
             routineName={routineName}
             setUser={setUser}
-            routineId={routineId}
-          />
+           />
 
         } />
         <Route path='/routine-activity-edit' element={
           <EditRoutineActivity
             setUser={setUser}
-            activityId={activityId}
-            actName={actName}
             setCount={setCount}
             count={count}
             setDur={setDur}
             dur={dur}
           />}
         />
-
 
       </Routes>
 
@@ -132,4 +120,11 @@ const App = () => {
 }
 
 export default App;
+
+
+           
+
+           
+
+
 

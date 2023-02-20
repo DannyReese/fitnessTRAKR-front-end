@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import { deleteRoutine } from '../Api.fetch'
 import DeleteCss from '../css/DeleteButton.module.css'
 

@@ -1,19 +1,20 @@
 import { useState } from "react"
 import { createRoutine } from '../Api.fetch'
-import { Link } from "react-router-dom";
+import { Navigate} from "react-router-dom";
 import EditCss from "../css/Edit.module.css"
 const CreateRoutine = () => {
     const [name, setName] = useState('');
     const [goal, setGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
-    console.log(isPublic)
+    const [resp, setResp] = useState('');
+    const [success, setSuccess] = useState(false)
 
     const handleChange = () => {
         setIsPublic(!isPublic);
     };
 
 
-    return (<>
+    return (success ? <Navigate to="/routines-user" /> :<>
     <div className={EditCss.title} >
                 <h1>Create Routine</h1>
             </div>
@@ -50,12 +51,19 @@ const CreateRoutine = () => {
                     </label>
                 </div>
                 <div  className={EditCss.subDiv}>
-                <Link to='/routines-user'
+                <div 
                     className={EditCss.submit}
                     onMouseDown={async (event) => {
                         event.preventDefault()
                         try {
-                            await createRoutine({ name, goal, isPublic })
+                           const resp = await createRoutine({ name, goal, isPublic })
+                           setResp(resp)
+                                        setTimeout(() => {
+                                            if (resp.id) {
+                                                setSuccess(true)
+                                            }
+                                            setResp('')
+                                        }, 3000)
                         } catch (e) {
                             console.error(e)
                         } finally {
@@ -63,9 +71,14 @@ const CreateRoutine = () => {
                             setGoal('')
                             setIsPublic(false)
                         }
-                    }}>Create</Link>
+                    }}>Create</div>
                     </div>
             </form>
+            {resp.error ? <div className={EditCss.notif}>
+                <p>a routine with that name already exists</p>
+            </div> : resp.id ? <div className={EditCss.notif}>
+                <p>{`routine ${resp.name} has been created`}</p>
+            </div> : <div></div>}
         </div>
     </>)
 }

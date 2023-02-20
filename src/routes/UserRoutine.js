@@ -7,14 +7,12 @@ import ActDeleteButton from "../components/ActDeleteButton";
 import { Link } from "react-router-dom";
 const UserRoutines = ({ setUser,
     setRoutineId,
-    setRoutineName,
     setGoal,
     setIsPublic,
     routineId,
-    setActivityId,
-    setActName,
     setCount,
     setDur,
+    setActivityId,
     activityId
 }) => {
 
@@ -36,84 +34,138 @@ const UserRoutines = ({ setUser,
 
     return (user ? <div >
         <div className={UserRoutinesCss.titleDiv}>
-        <div className={UserRoutinesCss.titleBox}>
-        <div className={UserRoutinesCss.headerBox}>
-        <h1 className={UserRoutinesCss.title}>{`${user}'s Routines`}</h1>
-        </div>
-        <Link to='/routines-create' className={UserRoutinesCss.Link}>Create Routine</Link>
-        </div>
-        
+            <div className={UserRoutinesCss.titleBox}>
+                <div className={UserRoutinesCss.headerBox}>
+                    <h1 className={UserRoutinesCss.title}>{`${user}'s Routines`}</h1>
+                </div>
+                <Link to='/routines-create' className={UserRoutinesCss.Link}>Create Routine</Link>
+            </div>
+
         </div>
         <div >
-           
+
         </div>
         <div className={UserRoutinesCss.container}>
 
             <div>{
                 userRoutines.length ? userRoutines.map(ur => {
                     return (
-                        <div className={UserRoutinesCss.routine} key={crypto.randomUUID()}
-                            onMouseOver={() => {
 
+                        <div className={UserRoutinesCss.routine}
+                            key={crypto.randomUUID()}
+                            onMouseOver={() => {
                                 setRoutineId(ur.id)
-                                setRoutineName(ur.name)
                                 setGoal(ur.goal)
                                 setIsPublic(ur.isPublic)
                                 localStorage.setItem('routineName', ur.name)
+                                localStorage.setItem('routineId', ur.id)
                             }}>
-                            <div className={UserRoutinesCss.routineHead}><h2>{ur.name}</h2>
-                                <div className={UserRoutinesCss.routineChangers}>
+
+                            <div
+                                className={UserRoutinesCss.routineHead}
+                                key={crypto.randomUUID()}
+                            >
+
+                                <h2
+                                    key={crypto.randomUUID()}
+                                >
+                                    {ur.name}
+                                </h2>
+
+                                <div
+                                    className={UserRoutinesCss.routineChangers}
+                                    key={crypto.randomUUID()}
+                                >
                                     <DeleteButton
+                                        key={crypto.randomUUID()}
                                         routineId={routineId}
                                         setChange={setChange}
                                         change={change}
-
                                     />
-                                    <Link to="/edit-routine"
+
+                                    <Link
+                                        to="/edit-routine"
+                                        key={crypto.randomUUID()}
                                         className={UserRoutinesCss.Link}>edit
                                     </Link>
-                                    <Link to='/routine-activities-add'
+
+                                    <Link
+                                        to='/routine-activities-add'
+                                        key={crypto.randomUUID()}
                                         className={UserRoutinesCss.Link}>Add Activity
                                     </Link>
 
                                 </div>
                             </div>
 
-                            <div>{ur.goal}</div>
+                            <div
+                                key={crypto.randomUUID()}
+                            >
+                                {ur.goal}
+                            </div>
                             {ur.activities.length ?
-                                <div>
+                                <div
+                                    key={crypto.randomUUID()}
+                                >
                                     <h3>Activities</h3>
 
                                     {ur.activities.map(a => {
-                                        return (<form>
-                                            <Link to='/routine-activity-edit'
-
-                                                onMouseOver={() => {
-                                                    console.log(a)
-                                                    setActivityId(a.routineActivityId)
-                                                    setActName(a.name)
-                                                    setCount(a.count)
-                                                    setDur(a.duration)
-                                                }}
+                                        return (
+                                            <form
+                                                key={crypto.randomUUID()}
                                             >
-                                                <div
-                                                    className={UserRoutinesCss.activities}
+                                                <Link
+                                                    to='/routine-activity-edit'
                                                     key={crypto.randomUUID()}
-                                                    value={a.id}
-                                                > 
-                                                    <div className={UserRoutinesCss.actInfo}>
-                                                    <div>{a.name}</div>
-                                                    <div>{a.description}</div>
-                                                    <div>Duration {a.duration}</div>
-                                                    <div>Count {a.count}</div>
+                                                    onMouseOver={() => {
+                                                        setActivityId(a.routineActivityId)
+                                                        setCount(a.count)
+                                                        setDur(a.duration)
+                                                        localStorage.setItem('actName', a.name)
+                                                        localStorage.setItem('actId', a.routineActivityId)
+                                                    }}
+                                                >
+                                                    <div
+                                                        className={UserRoutinesCss.activities}
+                                                        key={crypto.randomUUID()}
+                                                        value={a.id}
+                                                    >
+                                                        <div
+                                                            className={UserRoutinesCss.actInfo}
+                                                            key={crypto.randomUUID()}>
+                                                            <div
+                                                                key={crypto.randomUUID()}
+                                                            >
+                                                                {a.name}
+                                                            </div>
+
+                                                            <div
+                                                                key={crypto.randomUUID()}
+                                                            >
+                                                                {a.description}
+                                                            </div>
+
+                                                            <div
+                                                                key={crypto.randomUUID()}
+                                                            >
+                                                                Duration {a.duration}
+                                                            </div>
+
+                                                            <div
+                                                                key={crypto.randomUUID()}
+                                                            Í>
+                                                                Count {a.count}
+                                                            </div>
+
+                                                        </div>
+                                                        <ActDeleteButton
+                                                            key={crypto.randomUUID}
+                                                            setChange={setChange}
+                                                            activityId={activityId}
+                                                        />
                                                     </div>
-                                                    <ActDeleteButton
-                                                setChange={setChange}
-                                                activityId={activityId}
-                                                />
-                                                </div>
-                                            </Link>
-                                        </form>)
+                                                </Link>
+                                            </form>)
                                     })
                                     }</div> : null}
                         </div>
@@ -128,5 +180,4 @@ const UserRoutines = ({ setUser,
 }
 
 export default UserRoutines
-                                                    
-                                               
+

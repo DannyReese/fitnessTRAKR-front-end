@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Navigate } from "react-router-dom";
 import { updateRoutine } from '../Api.fetch'
+
 import EditCss from '../css/Edit.module.css'
 
 const Edit = ({
     setUser,
-    routineId,
     routineName,
     setRoutineName,
     goal,
@@ -14,6 +14,8 @@ const Edit = ({
     setIsPublic
 }) => {
 
+    const [resp, setResp] = useState('');
+    const [success, setSuccess] = useState(false)
 
     const nameTheUser = () => {
         setUser(localStorage.getItem('user'))
@@ -26,60 +28,77 @@ const Edit = ({
     useEffect(() => { nameTheUser() }, []);
 
 
-    return (
-        <>
-            <div className={EditCss.title} >
-                <h1>{routineName}</h1>
-            </div>
+    return (success ? <Navigate to="/routines-user" /> : <>
+        <div className={EditCss.title} >
+            <h1>{localStorage.getItem('routineName')}</h1>
+        </div>
 
-            <div className={EditCss.container}>
+        <div className={EditCss.container}>
 
-                <form className={EditCss.form}>
+            <form className={EditCss.form}>
 
-                    <div className={EditCss.cdInputs}>
-                        <h3 className={EditCss.title}>Name</h3>
-                        <input
-                            value={routineName}
-                            placeholder={`${routineName}`}
-                            onChange={event => setRoutineName(event.target.value)}>
-                        </input>
-                    </div>
+                <div className={EditCss.cdInputs}>
+                    <h3 className={EditCss.title}>Name</h3>
+                    <input
+                        value={routineName}
+                        placeholder={`${routineName}`}
+                        onChange={event => setRoutineName(event.target.value)}>
+                    </input>
+                </div>
 
-                    <div className={EditCss.cdInputs}>
-                        <h3 className={EditCss.title}>Goal</h3>
-                        <input
-                            value={goal}
-                            placeholder={`${goal}`}
-                            onChange={event => setGoal(event.target.value)}>
-                        </input>
-                    </div>
+                <div className={EditCss.cdInputs}>
+                    <h3 className={EditCss.title}>Goal</h3>
+                    <input
+                        value={goal}
+                        placeholder={`${goal}`}
+                        onChange={event => setGoal(event.target.value)}>
+                    </input>
+                </div>
 
-                    <div>
-                        <label>
-                            public
-                            <input type="checkbox"
-                                checked={isPublic}
-                                onChange={handleChange} />
-                        </label>
-                    </div>
+                <div>
+                    <label>
+                        public
+                        <input type="checkbox"
+                            checked={isPublic}
+                            onChange={handleChange} />
+                    </label>
+                </div>
 
-                    <div className={EditCss.subDiv}>
-                        <Link to='/routines-user'
-                            className={EditCss.submit}
-                            onMouseDown={() => {
-                                updateRoutine(
-                                    routineId,
-                                    routineName,
-                                    goal,
-                                    isPublic
-                                )
-                            }}> Submit Changes</Link>
-                    </div>
+                <div className={EditCss.subDiv}>
+                    <div
+                        className={EditCss.submit}
+                        onMouseDown={async (event) => {
+                            event.preventDefault()
 
-                </form>
+                            const respo = await updateRoutine(
+                                localStorage.getItem('routineId'),
+                                routineName,
+                                goal,
+                                isPublic
+                            )
+                            
+                                setResp(respo)
+                            
+                           
+                            console.log(resp)
+                            
+                            setTimeout(() => {
+                                if (respo.id) {
+                                    setSuccess(true)
+                                }
+                                setResp('')
+                            }, 3000)
+                        }}> Submit Changes</div>
+                </div>
 
-            </div>
-        </>
+            </form>
+            {resp.error ? <div className={EditCss.notif}>
+                <p>a routine with that name already exists</p>
+            </div> : resp.id ? <div className={EditCss.notif}>
+                <p>{`routine ${resp.name} has been created`}</p>
+            </div> : <div></div>}
+        </div>
+    </>
     )
 }
 
