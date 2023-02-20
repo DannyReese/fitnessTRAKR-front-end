@@ -1,27 +1,30 @@
-import React   from "react";
+import React ,{useState,useEffect}  from "react";
 import { getActivities } from "../Api.activities";
 import ActivityCss from "../css/Activity.module.css";
 
-const Activities = async ( [activities, setActivities]) => 
+const Activities = async () => 
+
 {
+    const [activities, setActivities] = useState([]);
+    // const [activityName, setActivityName] = useState('');
+    // const [activityDesc, setActivityDesc] = useState('');  
+
+    useEffect(() => {
     try {
             const showActivities = async () => {
-            const res = getActivities()
-            console.log(res)
-            setActivities(res)        
+            const res = await getActivities()
+            console.log(res);
+            setActivities(res) ;      
         }
 
         showActivities();
+        console.log(activities);
 
         } catch (error) {
          console.log(error);
         }
 
-         console.log(activities);
-
-//   useEffect((res) => {
-//     setActivities(res)
-//   }, [setActivities]);
+    }, [activities]);
 
 return (
     // <div>
@@ -34,7 +37,7 @@ return (
     //         </div>
     //     </div>
 
-    // <div> 
+    <div> 
     {activities.map(activity => {
        return (
            <div className={ActivityCss.activity} key={activity.id}>
@@ -45,7 +48,7 @@ return (
         }) 
     }
        
-    // </div>
+    </div>
 // </div>
 )
 
