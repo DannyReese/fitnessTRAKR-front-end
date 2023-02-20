@@ -1,29 +1,22 @@
-import React, { useEffect } from "react";
-import { myUser } from "../Api.fetch";
+import React from "react";
+import { Link } from 'react-router-dom'
+import HomeCss from '../css/Home.module.css'
 
-const Home = ({token,setToken,me,setMe}) => {
-   
-console.log(token)
+const Home = ()=>{
 
-useEffect(() => {
-        if (token) {
-          myUser(token)
-            .then((me) => {
-              setMe(me);
-            })
-            .catch((error) => {
-              console.log(`Failed to fetch me.`);
-            });
-        }
-      })
+    return(
+        <div className={HomeCss.home}>
+            <h2 className={HomeCss.title}>FitnessTrac.kr</h2>
+            <Link to='/routines'>Routines</Link>
+            <Link to='/activities'>Activities</Link>
+            <Link to='/login'>Login</Link>
+            <Link to='/register'>Register</Link>
 
-return (
-        <>
-          <header>
-            <h3>Hello : {me} </h3>
-            </header>
-        </>
-
-    )}
+            {/* make condition if user logged in have log out link instead of login */}
+            {/* {token? <Link to='/logout'> Logout </Link> : <Link to='/login'>Login</Link>}
+            {token? null : <Link to='/register'>Register</Link>} */}
+        </div>
+    )
+};
 
 export default Home;

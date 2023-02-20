@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { register } from "../Api.fetch";
+import { register } from "../Api.user";
 import RegisterCss from '../css/Register.module.css'
 
 

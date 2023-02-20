@@ -1,4 +1,5 @@
-const URL = "http://fitnesstrac-kr.herokuapp.com/api/";
+// const URL = "http://fitnesstrac-kr.herokuapp.com/api/";
+import { URL } from "./Const";
 
 export const register = async (username, password,setToken) => {
   try {
@@ -65,12 +66,14 @@ export const myUser = async (token) => {
       );
 
       const json = await response.json();
-      const me = json.username;
-      return me;
+      // return json;
+      const user = json.username;
+      console.log(user)
+      return user;
 
     } catch (error) {
-      console.log('Failed to fetch current user.');
-      console.error(error);
-      throw error;
+      console.log(error);
     }
   };
+
+ 

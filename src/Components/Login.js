@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { login } from "../Api.fetch";
+import { login } from "../Api.user";
 import LoginCss from '../css/Login.module.css'
 
 const Login = ({ username, setUsername, password, setPassword, token,setToken }) => {
@@ -15,7 +15,7 @@ const Login = ({ username, setUsername, password, setPassword, token,setToken })
           event.preventDefault();
 
           try {
-            const response = await login(username,password)
+            const response = await login(username,password);
 
             const responseToken = response.token;
 

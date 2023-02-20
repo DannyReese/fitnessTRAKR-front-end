@@ -1,8 +1,8 @@
-.navBar{
+.home{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgb(107, 107, 216);
+    background-color: cornflowerblue;
     padding-left: 1em;
     padding-right: 1em;
 }
@@ -11,3 +11,10 @@
     color: aliceblue;
     cursor: pointer;
 } */
+
+.title{
+  
+        color: rgb(226, 242, 249);
+        text-shadow: 2px 2px 4px #000000;
+    
+}

@@ -5,12 +5,6 @@ const Logout = ({token,setToken,me,setMe}) => {
     
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if (!token) {
-    //       navigate("/");
-    //     }
-    //   }, []);
-
 return(
     <>
         <form className='logout'>
@@ -22,7 +16,9 @@ return(
                 const removeToken = localStorage.clear();
                 setToken(removeToken);
                 }
+
                 navigate('/')
+
             }}>Confirm logout</button>
         </form>
     </>
