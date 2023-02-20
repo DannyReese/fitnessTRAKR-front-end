@@ -1,0 +1,8 @@
+.container{
+    display: flex;
+    justify-content: center;
+    height: 95vh;
+    overflow-y: scroll;
+    padding-left: 10vw;
+    padding-right: 10vw;
+}
