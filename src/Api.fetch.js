@@ -1,4 +1,4 @@
-const URL = "http://fitnesstrac-kr.herokuapp.com/api/"
+const URL = "https://fitnesstrac-kr.herokuapp.com/api/"
 
 
 
